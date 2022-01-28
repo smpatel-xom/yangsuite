@@ -4,8 +4,6 @@ version: '3'
 services:
     yangsuite:
       image: yangsuite:latest
-      build:
-        context: ./yangsuite
       env_file:
         - ./yangsuite/setup.env
       command: /yangsuite/migrate_and_start.sh
@@ -28,8 +26,6 @@ services:
         - ./ys-data:/ys-data
     nginx:
       image: nginx:latest
-      build:
-        context: ./nginx
       depends_on:
         - yangsuite
       ports:
@@ -40,8 +36,6 @@ services:
         - uwsgi:/var/run/uwsgi
     backup:
       image: backup:latest
-      build:
-        context: ./backup
       command: ['/code/run_cron.sh']
       depends_on:
         - yangsuite
