@@ -21,9 +21,9 @@ services:
         # RESTCONF
         - "443:443"
       volumes:
-        - static-content:/ys-static
+        - static-content:/var/lib/containers/storage/volumes/ys-static
         - uwsgi:/yangsuite/uwsgi
-        - ./ys-data:/ys-data
+        - ./ys-data:/var/lib/containers/storage/volumes/ys-data
     nginx:
       image: nginx:latest
       depends_on:
@@ -40,13 +40,13 @@ services:
       depends_on:
         - yangsuite
       environment:
-        - DATA_DIR=/ysdata
+        - DATA_DIR=/var/lib/containers/storage/volumes/ysdata
         - CRON_EXP=${YS_BACKUP_CRON:-*/30 * * * *}
         - NO_BACKUP=${YS_NO_BACKUP:-false}
         - MAX_BACKUP=${YS_MAX_BACKUP:-2}
       volumes:
-        - ./ys-data:/ysdata
-        - ./ys-backup:/backup
+        - ./ys-data:/var/lib/containers/storage/volumes/ysdata
+        - ./ys-backup:/var/lib/containers/storage/volumes/backup
 volumes:
     static-content:
     uwsgi:
