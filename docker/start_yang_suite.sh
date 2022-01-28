@@ -84,9 +84,9 @@ echo "Building docker containers..."
 
 cat >"yangsuite/setup.env" <<%%
 DJANGO_SETTINGS_MODULE=yangsuite.settings.production
-MEDIA_ROOT=/ys-data/
-STATIC_ROOT=/ys-static/
-DJANGO_STATIC_ROOT=/ys-static/
+MEDIA_ROOT=/var/lib/containers/storage/volumes/ys-data/
+STATIC_ROOT=/var/lib/containers/storage/volumes/ys-static/
+DJANGO_STATIC_ROOT=/var/lib/containers/storage/volumes/ys-static/
 DJANGO_ALLOWED_HOSTS=localhost
 YS_ADMIN_USER=$ADMIN_USER
 YS_ADMIN_PASS=$PASS_ONE
