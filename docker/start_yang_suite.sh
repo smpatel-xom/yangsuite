@@ -93,4 +93,4 @@ YS_ADMIN_PASS=$PASS_ONE
 YS_ADMIN_EMAIL=$ADMIN_EMAIL
 %%
 
-docker-compose up --build
+podman-compose up
